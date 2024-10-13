@@ -3,101 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="rps-game.js" defer></script>
+    <link href="styles.css" rel="stylesheet">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
-    <script>
-        // getComputerChoice function:
-        function getComputerChoice() {
-            // Randomly return rock, paper, or scissors
-            const choice = ["Rock", "Paper", "Scissors"];
-            return choice[Math.floor(Math.random() * 3)].toUpperCase();
-        }
-
-        // getHumanChoice function:
-        function getHumanChoice() {
-            
-            let userInput = "";
-            // Ask user for input:
-            do {
-                userInput = prompt("Rock, Paper, or Scissors?").toUpperCase();
-            } while (userInput !== "ROCK" && userInput !== "PAPER" && userInput !== "SCISSORS");
-            return userInput;
-        }
-
-        // Actual game
-        function playGame() {
-            // Keep track of score
-            let humanScore = 0;
-            let computerScore = 0;
-
-            // playRound function:
-            function playRound(humanChoice, computerChoice) {
-            // Compare humanChoice and computerChoice
-            switch (humanChoice) {
-                case "ROCK":
-                    if (computerChoice == "PAPER") {
-                        console.log("Computer Wins! Rock loses to Paper.");
-                        computerScore++;
-                    } else if (computerChoice == "SCISSORS") {
-                        console.log("You win! Rock beats Scissors.");
-                        humanScore++
-                    } else {
-                        console.log("Rock vs. Rock -- that's a tie!");
-                    };
-                    break;
-                case "PAPER":
-                    if (computerChoice == "ROCK") {
-                            console.log("You win! Paper beats Rock.");
-                            humanScore++;
-                        } else if (computerChoice == "SCISSORS") {
-                            console.log("You lose! Paper loses to Scissors.");
-                            computerScore++
-                        } else {
-                            console.log("Paper vs. Paper -- that's a tie!");
-                        };
-                        break;
-                case "SCISSORS":
-                    if (computerChoice == "PAPER") {
-                            console.log("You win! Scissors beats Paper.");
-                            humanScore++;
-                        } else if (computerChoice == "ROCK") {
-                            console.log("You lose! Scissors loses to Rock.");
-                            computerScore++
-                        } else {
-                            console.log("Scissors vs. Scissors -- that's a tie!");
-                        };
-                        break;
-                }
-            }
-
-            // Gameplay loop
-            let round = 1;
-            do {
-                // Get user choice and cpu choice
-                let humanChoice = getHumanChoice();
-                let computerChoice = getComputerChoice();
-                // Play a Round
-                playRound(humanChoice, computerChoice)
-                round++;
-            } while (round < 5);
-            // Check who won:
-            if (humanScore > computerScore) {
-                console.log("##########");
-                console.log("You won!");
-            } else if (humanScore < computerScore) {
-                console.log("##########");
-                console.log("You lost, try again!");
-            } else {
-                console.log("##########");
-                console.log("Wooow a tie, how about another round?");
-            }
-        }
-
-        // Launch game
-        playGame();
-    </script>
-
+    <h1>Odin Project: Rock-Paper-Scissors</h1>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div class="result">
+        <p id="result-text">Who will win?</p>
+        <p id="human-score">Your score:</p>
+        <p id="computer-score">Computer score:</p>
+    </div>
 </body>
 </html>
